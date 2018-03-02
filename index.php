@@ -47,6 +47,7 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css?family=Mukta+Malar" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 <title>TO-DO LIST</title>
 </head>
 <body>
@@ -56,12 +57,12 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
       <h2>Ajouter une tâche</h2>
         <form class="" action="index.php" method="post">
           <input type="text" name="tache" value="">
-          <input type="submit" name="ajouter" value="Ajouter">
+          <input type="submit" name="ajouter" value="Ajouter" class="ajout">
         </form>
     </section>
   <div class="listes">
-    <h2>A faire</h2>
-      <section class="afaire">
+    <section class="afaire">
+      <h2>A faire</h2>
         <form action="index.php" method="post" name="formafaire">
           <?php
             foreach ($data as $key => $value) {
@@ -70,12 +71,12 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
               <?php
             }
           ?>
-          <input type="submit" name="done" value="Fait">
+          <input type="submit" name="done" value="Fait" class="valider">
         </form>
     </section>
 
-      <h2>Fait</h2>
-        <section class="archive">
+      <section class="archive">
+        <h2>Fait</h2>
           <form action="index.php" method="post" name="formchecked">
             <div class="fait">
               <?php
@@ -85,7 +86,7 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
               <?php
               }
             ?>
-            <input type="submit" name="delete" value="Supprimer">
+            <input type="submit" name="delete" value="Supprimer" class="suppr">
           </div>
         </form>
     </section>
