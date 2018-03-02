@@ -8,7 +8,7 @@
         die('Erreur : '.$e->getMessage());
   }
 
-
+//données à faire
 $todo=$_POST["tache"];
 if (isset($_POST["ajouter"]) AND isset($_POST['tache'])){
   $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todo.'",0)');
@@ -23,7 +23,6 @@ if(isset($_POST["done"])){
 // données faites
 $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
  $data=$tododb->fetchAll(PDO::FETCH_ASSOC);
- print_r($data);
   if(!empty($todo) && isset($todo)){
     $db->query('INSERT INTO Ajouter (tache, fait) VALUES ("'.$todo.'","0")');
     }
@@ -37,19 +36,6 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
 //données archivées
   $done=$db->query('SELECT * FROM todolist WHERE Fait=1');
     $datadone=$done->fetchAll(PDO::FETCH_ASSOC);
-
-  //   if(isset($_POST["done"]) AND isset($_POST["lines"])){
-  //     for($i=0; $i<count($_POST["lines"]); $i++){
-  //       $db->exec('UPDATE tache SET fait="true"WHERE tache="'.$_POST["lines"][$i].'"');
-  //     }
-  //   }
-  // if (isset($_POST["delete"]) && isset($_POST["tacheok"])){
-  //   for($del=0; $del< count($_POST["tacheok"]); $del++){
-  //     $db->exec('DELETE FROM tache WHERE tache ="'.$_POST["tacheok"][$del].'"');
-  //   }
-  // }
-  //supprimer données archivées
-
   ?>
 
 <!DOCTYPE html>
