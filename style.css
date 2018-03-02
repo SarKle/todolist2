@@ -1,31 +1,55 @@
-.page{
+/* .page{
   width:600px;
   height: 1200px;
   text-align: center;
   padding-top: 15px;
   margin-left: 600px;
   border: 2px black;
+} */
+
+body{
+  display: grid;
+  grid-template-columns: 600px 600px 600px;
+  grid-template-rows: auto auto auto auto;
+  background-image: url('page2.jpg');
+  background-size: cover;
+  font-family: 'Courgette', cursive;
+  font-size: 20px;
+
+
+
+}
+.page{
+  grid-column: 2;
+}
+.tache{
+  grid-row: 2;
+  background-image: url('ajouter.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  height: 200px;
+  padding-top: 30px;
 }
 
 .afaire{
-  height: 300px;
-
+  grid-row: 3;
+  padding-left: 10px;
 }
 
 .archive{
-  height: 300px;
+  grid-row: 4;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }
 
-.tache{
-  background-image: url('ajouter.jpeg');
-  background-repeat: no-repeat;
-  background-size: 600px;
-  height: 200px;
-  padding-top: 15px;
+h1{
+  text-align: center;
 }
 
 h2{
   text-shadow: 3px 3px 3px white;
+  text-align: center;
 }
 
 .listes{
@@ -33,3 +57,22 @@ h2{
   background-repeat: no-repeat;
   opacity: 0.9;
 }
+
+.ajout{
+  color: blue;
+  border-color: blue;
+  height: 30px;
+}
+
+.valider{
+  color:green;
+  border-color:green;
+  height: 30px;
+  margin-left: 20px;
+}
+
+.suppr{
+   color: red;
+   border-color:red;
+   height: 30px;
+ }
