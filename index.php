@@ -10,8 +10,9 @@
 
 //données à faire
 $todo=$_POST["tache"];
+$todosanitized=filter_var($todo,FILTER_SANITIZE_STRING);
 if (isset($_POST["ajouter"]) AND isset($_POST['tache'])){
-  $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todo.'",0)');
+  $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todosanitized.'",0)');
 }
 
 if(isset($_POST["done"])){
@@ -23,8 +24,8 @@ if(isset($_POST["done"])){
 // données faites
 $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
  $data=$tododb->fetchAll(PDO::FETCH_ASSOC);
-  if(!empty($todo) && isset($todo)){
-    $db->query('INSERT INTO Ajouter (tache, fait) VALUES ("'.$todo.'","0")');
+  if(!empty($todosanitized) && isset($todosanitized)){
+    $db->query('INSERT INTO Ajouter (tache, fait) VALUES ("'.$todosanitized.'","0")');
     }
 
   if(isset($_POST["delete"])) {
@@ -59,14 +60,13 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
         </form>
     </section>
   <div class="listes">
-    <section class="afaire">
-      <h2>A faire</h2>
+    <h2>A faire</h2>
+      <section class="afaire">
         <form action="index.php" method="post" name="formafaire">
           <?php
             foreach ($data as $key => $value) {
               ?>
-              <input type="checkbox" name="A_faire[]" value="<?=$value['ID']?>">
-              <?= $value['Ajouter'] ?>
+              <label class="afaire"> <input type="checkbox" name="A_faire[]" value="<?=$value['ID']?>"> </label> <?= $value['Ajouter'] ?><br/>
               <?php
             }
           ?>
@@ -74,15 +74,14 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
         </form>
     </section>
 
-    <section class="archive">
       <h2>Fait</h2>
-        <form action="index.php" method="post" name="formchecked">
-          <div class="fait">
-            <?php
-            foreach ($datadone as $key => $value) {
+        <section class="archive">
+          <form action="index.php" method="post" name="formchecked">
+            <div class="fait">
+              <?php
+              foreach ($datadone as $key => $value) {
               ?>
-              <input type="checkbox" name="Done[]" value="<?=$value['ID']?>" checked>
-              <?= $value['Ajouter'] ?>
+                <label class="fait"> <input type="checkbox" name="Done[]" value="<?=$value['ID']?>" checked></label> <?= $value['Ajouter'] ?><br/>
               <?php
               }
             ?>
