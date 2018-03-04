@@ -1,21 +1,23 @@
 <?php
-  try{
+ini_set("display_errors",0);error_reporting(0);
+
+try{
 	//Connexion à mysql
-	  $db = new PDO('mysql:host=localhost;dbname=todolist;charset=utf8', 'root', 'root');
-  }
-  catch(Exception $e){
-	// Si erreur, stop le script
-        die('Erreur : '.$e->getMessage());
+  $db = new PDO('mysql:host=localhost;dbname=todolist;charset=utf8', 'root', 'root');
+}
+catch(Exception $e){
+// Si erreur, stop le script
+die('Erreur : '.$e->getMessage());
   }
 
 //données à faire
 $todo=$_POST["tache"];
 $todosanitized=filter_var($todo,FILTER_SANITIZE_STRING);
-if (isset($_POST["ajouter"]) AND isset($_POST['tache'])){
-  $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todosanitized.'",0)');
-}
+  if (isset($_POST["ajouter"]) AND isset($_POST['tache'])){
+    $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todosanitized.'",0)');
+  }
 
-if(isset($_POST["done"])){
+  if(isset($_POST["done"])){
     foreach($_POST["A_faire"] as $key => $value){
       $db->query('UPDATE todolist SET Fait=1 WHERE ID="'.$value.'"');
     }
@@ -46,7 +48,6 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Mukta+Malar" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 <title>TO-DO LIST</title>
 </head>
@@ -80,16 +81,16 @@ $tododb=$db->query('SELECT * FROM todolist WHERE Fait=0');
           <form action="index.php" method="post" name="formchecked">
             <div class="fait">
               <?php
-              foreach ($datadone as $key => $value) {
+                foreach ($datadone as $key => $value) {
               ?>
-                <label class="fait"> <input type="checkbox" name="Done[]" value="<?=$value['ID']?>" checked></label> <?= $value['Ajouter'] ?><br/>
+                <label class="fait"> <input type="checkbox" name="Done[]" value="<?=$value['ID']?>"></label> <?= $value['Ajouter'] ?><br/>
               <?php
-              }
-            ?>
-            <input type="submit" name="delete" value="Supprimer" class="suppr">
-          </div>
-        </form>
-    </section>
+                }
+              ?>
+              <input type="submit" name="delete" value="Supprimer" class="suppr">
+            </div>
+          </form>
+      </section>
   </div>
   </div>
 </body>

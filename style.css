@@ -1,12 +1,3 @@
-/* .page{
-  width:600px;
-  height: 1200px;
-  text-align: center;
-  padding-top: 15px;
-  margin-left: 600px;
-  border: 2px black;
-} */
-
 body{
   display: grid;
   grid-template-columns: 600px 600px 600px;
@@ -16,12 +7,11 @@ body{
   font-family: 'Courgette', cursive;
   font-size: 20px;
 
-
-
 }
 .page{
   grid-column: 2;
 }
+
 .tache{
   grid-row: 2;
   background-image: url('ajouter.jpeg');
@@ -34,13 +24,13 @@ body{
 
 .afaire{
   grid-row: 3;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 .archive{
   grid-row: 4;
   padding-bottom: 20px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 h1{
@@ -62,6 +52,8 @@ h2{
   color: blue;
   border-color: blue;
   height: 30px;
+  border-radius: 15px;
+  width: 90px;
 }
 
 .valider{
@@ -69,10 +61,15 @@ h2{
   border-color:green;
   height: 30px;
   margin-left: 20px;
+  border-radius: 15px;
+  width: 90px;
 }
 
 .suppr{
-   color: red;
-   border-color:red;
-   height: 30px;
+  color: red;
+  border-color:red;
+  border-radius: 15px;
+  height: 30px;
+  width: 90px;
+  margin-left: 17px;
  }
