@@ -13,7 +13,8 @@ die('Erreur : '.$e->getMessage());
 //données à faire
 $todo=$_POST["tache"];
 $todosanitized=filter_var($todo,FILTER_SANITIZE_STRING);
-  if (isset($_POST["ajouter"]) AND isset($_POST['tache'])){
+$todosanitized = trim($todosanitized);
+  if (isset($_POST["ajouter"]) AND isset($_POST['tache']) AND !empty($todosanitized)){
     $db->exec('INSERT INTO todolist (Ajouter, Fait) VALUES ("'.$todosanitized.'",0)');
   }
 
