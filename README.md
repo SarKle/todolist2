@@ -8,7 +8,7 @@
 * Déplacement dans la liste des tâches effectuées 
 
 
-Lien vers le chat en ligne: https://sarah-mychat.000webhostapp.com/
+Lien vers le chat en ligne: https://todolist-sarah.000webhostapp.com/
 
 #### Langages utilisés:
 
